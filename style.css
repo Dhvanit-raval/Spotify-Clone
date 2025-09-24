@@ -1,4 +1,4 @@
-body { 
+body {
     font-family: "Inter", sans-serif;
     font-optical-sizing: auto;
     font-weight: 400;
@@ -6,7 +6,6 @@ body {
     margin: 0;
     background-color: black;
     color: white;
-    /* Removed overflow: hidden; to enable scrolling on the body */
 }
 
 .main {
@@ -154,14 +153,14 @@ a {
     opacity: 1.2;
 }
 
-.box-p1 {
-    font-size: 1rem;
-    font-weight: 500;
-}
-
 .box:hover {
     opacity: 0.85;
     transition: ease-in 0.1s;
+}
+
+.box-p1 {
+    font-size: 1rem;
+    font-weight: 500;
 }
 
 .box-p2 {
@@ -236,7 +235,7 @@ a {
     }
 }
 
-@media (max-width:480px){
+@media (max-width:480px) {
     body {
         font-size: 0.875rem;
     }
@@ -300,6 +299,10 @@ a {
 .player {
     width: 50%;
     background-color: #000;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
 }
 
 .controls {
@@ -347,7 +350,6 @@ a {
     appearance: none;
     height: 1rem;
     width: 1rem;
-    color: #1bd760;
     background-color: #1bd760;
     border-radius: 50%;
     margin-top: -6px;
@@ -423,6 +425,35 @@ a {
     cursor: pointer;
 }
 
+.mobile-nav {
+    display: none;
+    background-color: #000;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    z-index: 100;
+    justify-content: space-around;
+    padding: 0.5rem 0;
+    box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.5);
+}
+
+.mobile-nav .nav-option {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    opacity: 0.8;
+}
+
+.mobile-nav .nav-option:hover {
+    opacity: 1;
+}
+
+.mobile-nav a {
+    font-size: 0.75rem;
+    margin-top: 0.25rem;
+}
+
 @media (max-width: 768px) {
     .main {
         flex-direction: column;
@@ -459,13 +490,14 @@ a {
     }
 
     .sidebar {
-        display: none; /* Hides the sidebar on mobile */
+        display: none;
     }
 
     .main-content {
         width: 100%;
         border-radius: 0.5rem;
         padding: 0.75rem;
+        height: calc(100vh - 8rem);
     }
 
     .card {
@@ -474,70 +506,172 @@ a {
     }
 
     .music {
-        flex-direction: column;
-        height: auto;
-        padding: 0.5rem;
-    }
-
-    .album, .player, .controls {
-        width: 100%;
-        margin: 0.25rem 0;
-        justify-content: center;
-        text-align: center;
-    }
-    
-    .player-controls {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        gap: 1.5rem;
-    }
-    
-    .player-control-icons {
-        height: 1.5rem;
-        opacity: 0.7;
-        margin-right: 0;
-    }
-    
-    .playback-bar {
         flex-direction: row;
+        height: 4rem;
+        padding: 0 1rem;
+        justify-content: space-between;
         align-items: center;
-        margin: 0.5rem 0;
-    }
-    
-    .progress-bar {
-        width: 80%;
-    }
-    
-    .album-volume {
-        padding-left: 0;
-        display: flex;
-        justify-content: center;
-        align-items: center;
+        bottom: 4rem;
     }
 
     .album {
-        flex-direction: column;
+        width: 30%;
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+    }
+
+    .player {
+        width: 40%;
+    }
+
+    .controls {
+        width: 30%;
+        justify-content: flex-end;
         align-items: center;
         display: flex;
+    }
+
+    .player-controls {
+        gap: 0.5rem;
+    }
+
+    .player-control-icons {
+        height: 1.5rem;
+        opacity: 0.7;
+        margin: 0 0.2rem;
+    }
+
+    .playback-bar {
+        display: none;
+    }
+
+    .album-volume {
+        display: none;
     }
 
     .album img {
         height: 3rem;
         width: 3rem;
         padding: 0;
-        margin-top: 0;
+        margin: 0;
         border-radius: 0.5rem;
     }
 
     .album-info {
-        padding-left: 0;
-        text-align: center;
-        margin-top: 0.25rem;
+        display: none;
     }
     
     .album-icon {
+        display: none;
+    }
+    
+    .mobile-nav {
+        display: flex;
+    }
+}
+
+@media (max-width: 480px) {
+    body {
+        font-size: 0.8rem;
+    }
+
+    .main {
+        padding: 0.5rem;
+        flex-direction: column;
+    }
+
+    .sidebar {
+        display: none;
+    }
+
+    .main-content {
+        width: 100%;
+        border-radius: 0.5rem;
+        padding: 0.75rem;
+        height: calc(100vh - 10rem); /* Adjust height to make room for both top nav and music bar */
+        margin-top: 3.5rem; /* Space for the top navigation */
+    }
+
+    .sticky-nav {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        padding: 0.5rem 1rem;
+        background-color: #121212;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
+        z-index: 20;
+    }
+
+    .card {
+        width: 100%;
+        margin: 0.5rem 0;
+    }
+
+    .music {
+        flex-direction: row;
+        height: 4rem;
+        padding: 0 1rem;
+        justify-content: space-between;
+        align-items: center;
+        bottom: 0;
+        z-index: 30; /* Ensure it stays on top */
+    }
+
+    .album {
+        width: 30%;
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+    }
+
+    .player {
+        width: 40%;
+    }
+
+    .controls {
+        width: 30%;
+        justify-content: flex-end;
+        align-items: center;
+        display: flex;
+    }
+
+    .player-controls {
         gap: 0.5rem;
-        padding: 0 0.5rem 0.75rem 0.5rem;
+    }
+
+    .player-control-icons {
+        height: 1.5rem;
+        opacity: 0.7;
+        margin: 0 0.2rem;
+    }
+
+    .playback-bar {
+        display: none;
+    }
+
+    .album-volume {
+        display: none;
+    }
+
+    .album img {
+        height: 3rem;
+        width: 3rem;
+        padding: 0;
+        margin: 0;
+        border-radius: 0.5rem;
+    }
+
+    .album-info {
+        display: none;
+    }
+    
+    .album-icon {
+        display: none;
+    }
+    
+    .mobile-nav {
+        display: flex;
     }
 }
