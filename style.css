@@ -6,14 +6,13 @@ body {
     margin: 0;
     background-color: black;
     color: white;
-    overflow: hidden;
+    /* Removed overflow: hidden; to enable scrolling on the body */
 }
 
 .main {
     display: flex;
     height: 100vh;
     padding: 0.8%;
-
 }
 
 .sidebar {
@@ -22,14 +21,11 @@ body {
     width: 340px;
     height: 100vh;
     border-radius: 1%;
-
-    /* 16px */
     margin-right: 0.6%;
 }
 
 .sidebar::-webkit-scrollbar {
     width: 0.625rem;
-
 }
 
 .sidebar::-webkit-scrollbar-track {
@@ -46,7 +42,6 @@ body {
     background-color: #121212;
     flex: 1;
     border-radius: 1rem;
-    /* 16px */
     overflow: auto;
     height: 100%;
     padding: 0 1.5rem 0 1.5rem;
@@ -54,7 +49,6 @@ body {
 
 .main-content::-webkit-scrollbar {
     width: 0.625rem;
-
 }
 
 .main-content::-webkit-scrollbar-track {
@@ -74,6 +68,9 @@ body {
     width: 100%;
     left: 0px;
     height: 4.5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
 a {
@@ -118,7 +115,6 @@ a {
     height: 100%;
     margin-top: 0.5rem;
     padding: 0.5rem 0.75rem;
-
 }
 
 .options {
@@ -208,9 +204,7 @@ a {
 
 .sticky-nav {
     display: flex;
-    /* justify-content: center; */
     align-items: center;
-
 }
 
 .sticky-nav button {
@@ -243,7 +237,7 @@ a {
 }
 
 @media (max-width:480px){
-    body{
+    body {
         font-size: 0.875rem;
     }
 }
@@ -255,7 +249,6 @@ a {
     padding: 1rem;
     margin-left: 1.5rem;
     margin-top: 1rem;
-
 }
 
 .card:hover {
@@ -267,7 +260,6 @@ a {
 .cards-container {
     display: flex;
     flex-wrap: wrap;
-
 }
 
 .card-img {
@@ -282,7 +274,6 @@ a {
 .info {
     font-size: 0.85rem;
     opacity: 0.8;
-
 }
 
 .footer {
@@ -297,20 +288,13 @@ a {
     height: 30%;
     border-top: 1px solid white;
     opacity: 0.4;
-
-}
-
-.music {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-
 }
 
 .album {
     width: 30%;
     height: 100%;
     background-color: #000;
+    display: flex;
 }
 
 .player {
@@ -357,7 +341,6 @@ a {
     background-color: #fffbfb;
     border-radius: 100px;
     height: 0.2rem;
-
 }
 
 .progress-bar::-webkit-slider-thumb {
@@ -368,7 +351,6 @@ a {
     background-color: #1bd760;
     border-radius: 50%;
     margin-top: -6px;
-
 }
 
 .album-volume {
@@ -400,13 +382,8 @@ a {
     cursor: pointer;
 }
 
-.album {
-    display: flex;
-}
-
 .album-info {
     padding-left: 0.75rem;
-
 }
 
 .album img {
@@ -423,7 +400,6 @@ a {
     padding-bottom: 0.75rem;
     padding-left: 0.5rem;
     padding-right: 0.5rem;
-
 }
 
 .album-icon i {
@@ -440,10 +416,128 @@ a {
     font-size: 1rem;
     opacity: 0.7;
     padding-right: 0.5rem;
-
 }
 
 .album-volume i:hover {
     opacity: 1;
     cursor: pointer;
+}
+
+@media (max-width: 768px) {
+    .main {
+        flex-direction: column;
+        height: auto;
+    }
+
+    .sidebar {
+        width: 100%;
+        height: auto;
+        margin-right: 0;
+        margin-bottom: 1rem;
+    }
+
+    .main-content {
+        width: 100%;
+        border-radius: 0.5rem;
+        padding: 0.75rem;
+    }
+
+    .card {
+        width: 45%;
+        margin: 0.5rem;
+    }
+}
+
+@media (max-width: 480px) {
+    body {
+        font-size: 0.8rem;
+    }
+
+    .main {
+        padding: 0.5rem;
+        flex-direction: column;
+    }
+
+    .sidebar {
+        display: none; /* Hides the sidebar on mobile */
+    }
+
+    .main-content {
+        width: 100%;
+        border-radius: 0.5rem;
+        padding: 0.75rem;
+    }
+
+    .card {
+        width: 100%;
+        margin: 0.5rem 0;
+    }
+
+    .music {
+        flex-direction: column;
+        height: auto;
+        padding: 0.5rem;
+    }
+
+    .album, .player, .controls {
+        width: 100%;
+        margin: 0.25rem 0;
+        justify-content: center;
+        text-align: center;
+    }
+    
+    .player-controls {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 1.5rem;
+    }
+    
+    .player-control-icons {
+        height: 1.5rem;
+        opacity: 0.7;
+        margin-right: 0;
+    }
+    
+    .playback-bar {
+        flex-direction: row;
+        align-items: center;
+        margin: 0.5rem 0;
+    }
+    
+    .progress-bar {
+        width: 80%;
+    }
+    
+    .album-volume {
+        padding-left: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .album {
+        flex-direction: column;
+        align-items: center;
+        display: flex;
+    }
+
+    .album img {
+        height: 3rem;
+        width: 3rem;
+        padding: 0;
+        margin-top: 0;
+        border-radius: 0.5rem;
+    }
+
+    .album-info {
+        padding-left: 0;
+        text-align: center;
+        margin-top: 0.25rem;
+    }
+    
+    .album-icon {
+        gap: 0.5rem;
+        padding: 0 0.5rem 0.75rem 0.5rem;
+    }
 }
